@@ -1,6 +1,6 @@
 {
   "name": "can-map-backup",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Backup and restore a Maps state",
   "homepage": "https://canjs.com",
   "author": {
