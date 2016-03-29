@@ -1,6 +1,5 @@
 @function can.Map.backup.prototype.backup backup
-@plugin can/map/backup
-@parent can.Map.backup 0
+@parent can-map-backup.api
 
 @description Save the values of the properties of an Map.
 

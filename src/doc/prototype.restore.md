@@ -1,6 +1,5 @@
 @function can.Map.backup.prototype.restore restore
-@plugin can/map/backup
-@parent can.Map.backup 2
+@parent can-map-backup.api
 
 @description Restore saved values of an Observe's properties.
 

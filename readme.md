@@ -1,3 +1,8 @@
+@page can-map-backup
+@group can-map-backup.usage 0 Usage
+@group can-map-backup.api 1 API Reference
+@test src/test/test.html
+
 # can-map-backup
 
 [![Build Status](https://travis-ci.org/canjs/can-map-backup.png?branch=master)](https://travis-ci.org/canjs/can-map-backup)

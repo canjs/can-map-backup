@@ -1,11 +1,8 @@
-@page can.Map.backup backup
-@parent can.Map.plugins
-@plugin can/map/backup
-@test can/map/backup/test.html
+@page can.Map.backup Usage Guide
+@parent can-map-backup.usage
 
 can.Map.backup is a plugin that provides a dirty bit for properties on an Map,
 and lets you restore the original values of an Map's properties after they are changed.
-
 
 Here is an example showing how to use `[can.Map.backup.prototype.backup backup]` to save values,
 `[can.Map.backup.prototype.restore restore]` to restore them, and `[can.Map.backup.prototype.isDirty isDirty]`

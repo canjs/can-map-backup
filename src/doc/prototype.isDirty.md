@@ -1,6 +1,5 @@
 @function can.Map.backup.prototype.isDirty isDirty
-@plugin can/map/backup
-@parent can.Map.backup 1
+@parent can-map-backup.api
 
 @description Check whether an Observe has changed since the last time it was backed up.
 
