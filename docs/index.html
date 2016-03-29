@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--####################################################################
+	THIS IS A GENERATED FILE -- ANY CHANGES MADE WILL BE OVERWRITTEN
+
+	INSTEAD CHANGE:
+	source: readme.md
+	@page can-map-backup
+######################################################################## -->
+
+<!--[if lt IE 7]>
+<html class="no-js ie lt-ie9 lt-ie8 lt-ie7" lang="en">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js ie lt-ie9 lt-ie8" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie lt-ie9" lang="en">
+<![endif]-->
+<!--[if IE 9]>
+<html class="no-js ie ie9" lang="en">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>can-map-backup  - can-map-backup</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
+	
+	<!--[if lt IE 9]>
+   <script type="text/javascript" src="static/html5shiv.js"></script>
+    <!--<![endif]-->
+</head>
+
+<body class="docs">
+	
+	<header>
+		<nav class="container">
+
+			<div class="logo-menu">
+				<a class="brand" href="./index.html">can-map-backup</a>
+			</div>
+
+			<div class="pull-right">
+				<div class="bitovi-menu">
+					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
+					<ul class="dropdown-menu">
+						<li><a href="http://bitovi.com">Bitovi.com</a></li>
+						<li><a href="http://bitovi.com/blog/">Blog</a></li>
+						<li><a href="http://bitovi.com/design/">Design</a></li>
+						<li><a href="http://bitovi.com/development/">Development</a></li>
+						<li><a href="http://bitovi.com/training/">Training</a></li>
+						<li><a href="http://bitovi.com/open-source/">Open Source</a></li>
+						<li><a href="http://bitovi.com/people/">People</a></li>
+						<li><a href="http://bitovi.com/contact/">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+
+	
+<div class="container api">
+
+	
+	<nav class="sidebar">
+		
+		<ul class="api cascading primary-grouping"> 
+	
+		
+		
+			
+			<li class="search-container active">
+			<a class="sidebar-title" href="index.html" data-search="can-map-backup">
+				can-map-backup
+			</a>
+			
+	<ul>
+		
+			
+				
+					<li class="heading search-container">
+						<span>Usage</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="can.Map.backup.html" data-search="Usage Guide">
+						Usage Guide
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+					</li>
+				
+				
+			
+			
+		
+			
+				
+					<li class="heading search-container">
+						<span>API Reference</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="can.Map.backup.prototype.backup.html" data-search="backup">
+						backup
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="can.Map.backup.prototype.isDirty.html" data-search="isDirty">
+						isDirty
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="can.Map.backup.prototype.restore.html" data-search="restore">
+						restore
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+					</li>
+				
+				
+			
+			
+		
+	</ul>
+
+		</li>
+			
+		
+	
+</ul>
+	</nav>
+	
+	
+	
+	<article class="content docs">
+	
+	
+		
+		<section class="title">
+			<div class="heading">
+<h1>can-map-backup</h1>
+	<ul class="tags">
+		<li>page</li>
+	</ul>
+	
+	
+</div>
+
+<div class="sub-heading">
+	
+	
+	<span class="inherits">&nbsp;</span>
+</div>
+
+<ul class="links">
+	
+	
+	
+	
+		<li><a href="../src/test/test.html">tests</a></li>
+	
+</ul>
+<br />
+		</section>
+		
+		
+		
+		<section class="contents">
+		</section>
+		
+		
+		
+
+		
+		<section class="description">
+			<h1>can-map-backup</h1>
+
+		</section>
+		
+
+		
+			
+		
+		
+		
+		
+
+		
+		<section class="comment">
+			<p><a href="https://travis-ci.org/canjs/can-map-backup"><img src="https://travis-ci.org/canjs/can-map-backup.png?branch=master" alt="Build Status" /></a></p>
+<p>Backup and restore a Maps state</p>
+<h2>Usage</h2>
+<h3>ES6 use</h3>
+<p>With StealJS, you can import this module directly in a template that is autorendered:</p>
+<pre><code class="language-js">import plugin from 'can-map-backup';
+</code></pre>
+<h3>CommonJS use</h3>
+<p>Use <code>require</code> to load <code>can-map-backup</code> and everything else
+needed to create a template that uses <code>can-map-backup</code>:</p>
+<pre><code class="language-js">var plugin = require(&quot;can-map-backup&quot;);
+</code></pre>
+<h2>AMD use</h2>
+<p>Configure the <code>can</code> and <code>jquery</code> paths and the <code>can-map-backup</code> package:</p>
+<pre><code class="language-html">&lt;script src=&quot;require.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    require.config({
+        paths: {
+            &quot;jquery&quot;: &quot;node_modules/jquery/dist/jquery&quot;,
+            &quot;can&quot;: &quot;node_modules/canjs/dist/amd/can&quot;
+        },
+        packages: [{
+                name: 'can-map-backup',
+                location: 'node_modules/can-map-backup/dist/amd',
+                main: 'lib/can-map-backup'
+        }]
+    });
+    require([&quot;main-amd&quot;], function(){});
+&lt;/script&gt;
+</code></pre>
+<h3>Standalone use</h3>
+<p>Load the <code>global</code> version of the plugin:</p>
+<pre><code class="language-html">&lt;script src='./node_modules/can-map-backup/dist/global/can-map-backup.js'&gt;&lt;/script&gt;
+</code></pre>
+<h2>Contributing</h2>
+<h3>Making a Build</h3>
+<p>To make a build of the distributables into <code>dist/</code> in the cloned repository run</p>
+<pre><code>npm install
+node build
+</code></pre>
+<h3>Running the tests</h3>
+<p>Tests can run in the browser by opening a webserver and visiting the <code>test.html</code> page.
+Automated tests that run the tests from the command line in Firefox can be run with</p>
+<pre><code>npm test
+</code></pre>
+
+		</section>
+		
+		
+
+		
+
+		
+	
+	
+	</article>
+	
+	
+
+</div>
+
+
+
+
+
+	
+	<footer>
+		<nav class="container">
+			<a class="brand javascriptmvc" href="index.html"></a>
+		</nav>
+	</footer>
+	
+	
+	<script type="text/javascript">
+		var docObject = {"type":"page","name":"can-map-backup","src":"readme.md","description":"# can-map-backup","test":"src/test/test.html","dest":"/Users/janjorgensen/Workspace/plugins/plugins/can-map-backup/docs","glob":{"pattern":"{readme.md,src/**/*.{js,md}}","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/janjorgensen/Workspace/plugins/plugins/can-map-backup"},"forceBuild":true,"generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{}};
+	</script>
+	
+	
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				data-config="./static/config.js"
+				src="./static/steal.production.js"
+	    		bundles-path="bundles"></script>
+	
+</body>
+
+</html>
