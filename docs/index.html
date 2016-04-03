@@ -84,34 +84,7 @@
 			
 				
 					<li class="heading search-container">
-						<span>Usage</span>
-						
-	<ul>
-		
-			
-				
-				
-				<li class="search-container">
-					<a class="page" href="can.Map.backup.html" data-search="Usage Guide">
-						Usage Guide
-					</a>
-				</li>
-				
-			
-			
-		
-	</ul>
-
-					</li>
-				
-				
-			
-			
-		
-			
-				
-					<li class="heading search-container">
-						<span>API Reference</span>
+						<span>API</span>
 						
 	<ul>
 		
@@ -226,7 +199,41 @@
 		
 		<section class="comment">
 			<p><a href="https://travis-ci.org/canjs/can-map-backup"><img src="https://travis-ci.org/canjs/can-map-backup.png?branch=master" alt="Build Status" /></a></p>
-<p>Backup and restore a Maps state</p>
+<p>can.Map.backup is a plugin that provides a dirty bit for properties on an Map,
+and lets you restore the original values of an Map's properties after they are changed.</p>
+<h2>Overview</h2>
+<p>Here is an example showing how to use <code><a href="can.Map.backup.prototype.backup.html">backup</a></code> to save values,
+<code><a href="can.Map.backup.prototype.restore.html">restore</a></code> to restore them, and <code><a href="can.Map.backup.prototype.isDirty.html">isDirty</a></code></p>
+<p>to check if the Map has changed:</p>
+<pre><code>var recipe = new can.Map({
+  title: 'Pancake Mix',
+  yields: '3 batches',
+  ingredients: [{
+    ingredient: 'flour',
+    quantity: '6 cups'
+  },{
+    ingredient: 'baking soda',
+    quantity: '1 1/2 teaspoons'
+  },{
+    ingredient: 'baking powder',
+    quantity: '3 teaspoons'
+  },{
+    ingredient: 'salt',
+    quantity: '1 tablespoon'
+  },{
+    ingredient: 'sugar',
+    quantity: '2 tablespoons'
+  }]
+});
+recipe.backup();
+
+recipe.attr('title', 'Flapjack Mix');
+recipe.title;     // 'Flapjack Mix'
+recipe.isDirty(); // true
+
+recipe.restore();
+recipe.title;     // 'Pancake Mix'
+</code></pre>
 <h2>Usage</h2>
 <h3>ES6 use</h3>
 <p>With StealJS, you can import this module directly in a template that is autorendered:</p>
@@ -237,7 +244,7 @@
 needed to create a template that uses <code>can-map-backup</code>:</p>
 <pre><code class="language-js">var plugin = require(&quot;can-map-backup&quot;);
 </code></pre>
-<h2>AMD use</h2>
+<h3>AMD use</h3>
 <p>Configure the <code>can</code> and <code>jquery</code> paths and the <code>can-map-backup</code> package:</p>
 <pre><code class="language-html">&lt;script src=&quot;require.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
