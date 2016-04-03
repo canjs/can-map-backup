@@ -52,4 +52,4 @@ recipe.attr('ingredients.0.quantity'); // '6 cups'
 
 ## Events
 When `restore` sets values or re-adds properties, the same events will be fired (including
-_change_, _add_, and _set_) as if the values of the properties had been set using `[can.Map.prototype.attr attr]`.
+_change_, _add_, and _set_) as if the values of the properties had been set using [`attr`](http://canjs.com/docs/can.Map.prototype.attr.html).
