@@ -54,19 +54,22 @@
     "npmAlgorithm": "flat"
   },
   "dependencies": {
-    "can": "^2.3.16",
-    "jquery": "~2.2.1"
+    "can-compute": "^3.0.0-pre.11",
+    "can-map": "^3.0.0-pre.8",
+    "can-set": "^0.6.0-pre.8",
+    "can-util": "^3.0.0-pre.34"
   },
   "devDependencies": {
-    "documentjs": "^0.4.2",
-    "jshint": "^2.9.1",
+    "can-map-define": "^3.0.0-pre.2",
+    "can-ssr": "^0.11.6",
     "cssify": "^0.6.0",
+    "documentjs": "^0.4.2",
+    "donejs-cli": "^0.7.0",
+    "generator-donejs": "^0.7.0",
+    "jshint": "^2.9.1",
     "steal": "^0.14.0",
     "steal-qunit": "^0.1.1",
     "steal-tools": "^0.14.0",
-    "testee": "^0.2.4",
-    "generator-donejs": "^0.7.0",
-    "donejs-cli": "^0.7.0",
-    "can-ssr": "^0.11.6"
+    "testee": "^0.2.4"
   }
 }
