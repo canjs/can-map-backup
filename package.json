@@ -55,6 +55,10 @@
   },
   "dependencies": {
     "can-compute": "^3.0.0-pre.11",
+    "can-connect": "^0.6.0-pre.16",
+    "can-fixture": "^0.4.0-pre.11",
+    "can-jquery": "^3.0.0-pre.6",
+    "can-list": "^3.0.0-pre.6",
     "can-map": "^3.0.0-pre.8",
     "can-set": "^0.6.0-pre.8",
     "can-util": "^3.0.0-pre.34"

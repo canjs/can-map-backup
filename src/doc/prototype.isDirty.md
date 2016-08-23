@@ -1,4 +1,4 @@
-@function can.Map.backup.prototype.isDirty isDirty
+@function can-map-backup.prototype.isDirty isDirty
 @parent can-map-backup.api
 
 @description Check whether an Observe has changed since the last time it was backed up.
@@ -14,7 +14,9 @@ If the Observe has never been backed up, `isDirty` returns `undefined`.
 @return {bool} Whether the Observe has changed since the last time it was [can.Map.backup.prototype.backup backed up].
 
 ```
-var recipe = new can.Map({
+var CanMap = require('can-map');
+
+var recipe = new CanMap("Recipe", {
 title: 'Pancake Mix',
 yields: '3 batches',
 ingredients: [{
