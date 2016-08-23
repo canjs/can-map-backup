@@ -34,9 +34,7 @@ assign(CanMap.prototype, {
 			return false;
 		}
 		var currentValue = this.attr();
-		var aParent = undefined;
-		var bParent = undefined;
-		var parentProp = undefined;
+		var aParent, bParent, parentProp;
 		var compares = {};
 		var options = { deep: !! checkAssociations };
 

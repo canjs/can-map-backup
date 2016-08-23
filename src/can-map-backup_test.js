@@ -1,4 +1,3 @@
-/*global Recipe*/
 var compute = require('can-compute');
 var CanMap = require('can-map');
 
@@ -13,6 +12,7 @@ QUnit.module('can/map/backup', {
 		Recipe = CanMap.extend('Recipe');
 	}
 });
+
 test('backing up', function () {
 	var recipe = new Recipe({
 		name: 'cheese'
