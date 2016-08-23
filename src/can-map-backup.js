@@ -38,11 +38,9 @@ assign(CanMap.prototype, {
 		var bParent = undefined;
 		var parentProp = undefined;
 		var compares = {};
-		var options = {
-			deep: !! checkAssociations,
-			checks: [function(a,b){ return a === b;}]
-	};
-		return !compare.equalObject(currentValue, backupStore, aParent, bParent, parentProp, compares, options);
+		var options = { deep: !! checkAssociations };
+
+		return !compare.equal(currentValue, backupStore, aParent, bParent, parentProp, compares, options);
 	},
 	restore: function (restoreAssociations) {
 		var props = restoreAssociations ? this._backupStore() : flatProps(this._backupStore(), this);

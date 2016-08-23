@@ -1,10 +1,13 @@
 /*global Recipe*/
+var compute = require('can-compute');
+var CanMap = require('can-map');
+
 require('can-map-backup');
 require('can-map-define');
 require('steal-qunit');
-var CanMap = require('can-map');
 
 var Recipe;
+
 QUnit.module('can/map/backup', {
 	setup: function () {
 		Recipe = CanMap.extend('Recipe');
@@ -74,54 +77,54 @@ test('backup / restore with associations', function () {
 	ok(!recipe.isDirty(true), 'cleaned all of recipe and its associations');
 });
 
-// test('backup restore nested observables', function () {
-// 	var observe = new CanMap({
-// 		nested: {
-// 			test: 'property'
-// 		}
-// 	});
-// 	equal(observe.attr('nested')
-// 		.attr('test'), 'property', 'Nested object got converted');
-// 	observe.backup();
+test('backup restore nested observables', function () {
+	var observe = new CanMap({
+		nested: {
+			test: 'property'
+		}
+	});
+	equal(observe.attr('nested')
+		.attr('test'), 'property', 'Nested object got converted');
+	observe.backup();
 
-// 	observe.attr('nested')
-// 		.attr('test', 'changed property');
+	observe.attr('nested')
+		.attr('test', 'changed property');
 
-// 	equal(observe.attr('nested')
-// 		.attr('test'), 'changed property', 'Nested property changed');
+	equal(observe.attr('nested')
+		.attr('test'), 'changed property', 'Nested property changed');
 
-// 	ok(observe.isDirty(true), 'Observe is dirty');
-// 	observe.restore(true);
-// 	equal(observe.attr('nested')
-// 		.attr('test'), 'property', 'Nested object got restored');
-// });
+	ok(observe.isDirty(true), 'Observe is dirty');
+	observe.restore(true);
+	equal(observe.attr('nested')
+		.attr('test'), 'property', 'Nested object got restored');
+});
 
-// test('backup removes properties that were added (#607)', function () {
-// 	var map = new CanMap({});
-// 	map.backup();
-// 	map.attr('foo', 'bar');
-// 	ok(map.isDirty(), 'the map with an additional property is dirty');
-// 	map.restore();
-// 	ok(!map.attr('foo'), 'there is no foo property');
-// });
+test('backup removes properties that were added (#607)', function () {
+	var map = new CanMap({});
+	map.backup();
+	map.attr('foo', 'bar');
+	ok(map.isDirty(), 'the map with an additional property is dirty');
+	map.restore();
+	ok(!map.attr('foo'), 'there is no foo property');
+});
 
-// test('isDirty wrapped in a compute should trigger changes #1417', function() {
-// 	expect(2);
-// 	var recipe = new Recipe({
-// 		name: 'bread'
-// 	});
+test('isDirty wrapped in a compute should trigger changes #1417', function() {
+	expect(2);
+	var recipe = new Recipe({
+		name: 'bread'
+	});
 
-// 	recipe.backup();
+	recipe.backup();
 
-// 	var c = can.compute(function() {
-// 		return recipe.isDirty();
-// 	});
+	var c = compute(function() {
+		return recipe.isDirty();
+	});
 
-// 	ok(!c(), 'isDirty is false');
+	ok(!c(), 'isDirty is false');
 
-// 	c.bind('change', function() {
-// 		ok(c(), 'isDirty is true and a change has occurred');
-// 	});
+	c.bind('change', function() {
+		ok(c(), 'isDirty is true and a change has occurred');
+	});
 
-// 	recipe.attr('name', 'cheese');
-// });
+	recipe.attr('name', 'cheese');
+});
