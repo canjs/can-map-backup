@@ -38,17 +38,18 @@
 </div>
 
 <script type='text/javascript' src='../../../node_modules/steal/steal.js' main="@empty">
-var can = require('can/util/util');
-require('can/map/backup/backup');
-require('can/map/delegate/delegate');
-require('can/map/attributes/attributes');
-require('can/model/model');
-require('can/util/fixture/fixture');
-require('can/view/stache/stache');
+var CanMap = require('can-map');
+var CanList = require('can-list');
+var can = require('can-util');
+var $ = require('can-jquery');
+var fixture = require('can-fixture');
+var superMap = require('can-connect/can/super-map/');
+var tag = require('can-connect/can/tag/');
 
-can.fixture("/contacts.json", function(orig, settings, headers){
-return [
-		{
+require('can-map-backup');
+require('can-map-define');
+
+var store = fixture.store([{
 			'id': 1,
 			'name' : 'Justin Meyer',
 			'birthday': '1982-10-20'
@@ -62,13 +63,13 @@ return [
 			'id': 3,
 			'name' : 'Motley Crew',
 			'birthday': '1980-2-10'
-		}
-	];
-});
+		}]);
 
-Contact = can.Model.extend({
-	attributes : {
-		birthday : 'date'
+fixture("GET /contacts", store);
+
+var Contact = CanMap.extend({
+	define: {
+		birthday : {type: 'date'}
 	},
 	convert : {
 		date : function(raw){
@@ -82,42 +83,52 @@ Contact = can.Model.extend({
 			}
 		}
 	},
-	findAll : 'GET /contacts.json',
-	update : 'POST /contacts.json'
 },{
 	ageThisYear : function(){
+		var birthday = new Date(this.birthday);
 		return new Date().getFullYear() -
-		      this.birthday.getFullYear()
+		    	birthday.getFullYear();
 	},
 	getBirthday : function(){
-		return ""+this.birthday.getFullYear()+
-			"-"+(this.birthday.getMonth()+1)+
-			"-"+this.birthday.getDate();
+		var birthday = new Date(this.birthday);
+		return ""+birthday.getFullYear()+
+			"-"+(parseInt(birthday.getMonth())+1)+
+			"-"+birthday.getDate();
 	}
 });
+
+var connection = superMap({
+  url: '/contacts',
+  idProp: 'id',
+  Map: Contact,
+  List: Contact.List,
+  name: 'contact'
+});
+
+tag('contact-model', connection);
 
 var makeAgeUpdater = function(contact){
 	var updater = $("#update")
 	updater.html("");
 	updater.append(contact.name+"'s birthday");
 
-	can.$('<input type="text" />').val(
+	$('<input type="text" />').val(
 		contact.getBirthday())
 	.change(function(){
 		contact.attr('birthday', this.value);
 	}).appendTo(updater);
 }
 
-can.$('#contacts').delegate("li","click", function(){
-	makeAgeUpdater( can.$(this).data('model') );
+$('#contacts').delegate("li","click", function(){
+	makeAgeUpdater( $(this).data('model') );
 });
 
-Contact.findAll({},function(contacts){
-  var contactsEl = can.$('#contacts');
+Contact.getList().then(function(contacts){
+  var contactsEl = $('#contacts');
   can.each(contacts, function(contact){
 
 	// add the contact to the page
-	var li = can.$('<li>')
+	var li = $('<li>')
               .data('model', contact)
               .html(contact.name + " "+
 					contact.ageThisYear() +
@@ -136,7 +147,7 @@ Contact.findAll({},function(contacts){
   })
 
   // on restore, update all contacts
-  can.$("#restore").click(function(){
+  $("#restore").click(function(){
     contacts.each(function(){
 		this.restore()
 	});

@@ -1,8 +1,8 @@
 //allows you to backup and restore a map instance
-var can = require('can/util/util');
-require('can/compute/compute');
-require('can/map/map');
-require('can/util/object/object');
+var compute = require('can-compute');
+var CanMap = require('can-map');
+var compare = require('can-set/src/compare');
+var assign = require("can-util/js/assign/assign");
 
 var flatProps = function (a, cur) {
 	var obj = {};
@@ -16,11 +16,11 @@ var flatProps = function (a, cur) {
 	return obj;
 };
 
-var oldSetup = can.Map.prototype.setup;
+var oldSetup = CanMap.prototype.setup;
 
-can.extend(can.Map.prototype, {
+assign(CanMap.prototype, {
 	setup: function() {
-		this._backupStore = can.compute();
+		this._backupStore = compute();
 		return oldSetup.apply(this, arguments);
 	},
 
@@ -29,7 +29,16 @@ can.extend(can.Map.prototype, {
 		return this;
 	},
 	isDirty: function (checkAssociations) {
-		return this._backupStore() && !can.Object.same(this.attr(), this._backupStore(), undefined, undefined, undefined, !! checkAssociations);
+		var backupStore = this._backupStore();
+		if(!backupStore){
+			return false;
+		}
+		var currentValue = this.attr();
+		var aParent, bParent, parentProp;
+		var compares = {};
+		var options = { deep: !! checkAssociations };
+
+		return !compare.equal(currentValue, backupStore, aParent, bParent, parentProp, compares, options);
 	},
 	restore: function (restoreAssociations) {
 		var props = restoreAssociations ? this._backupStore() : flatProps(this._backupStore(), this);
@@ -39,4 +48,4 @@ can.extend(can.Map.prototype, {
 		return this;
 	}
 });
-module.exports = exports = can.Map;
+module.exports = exports = CanMap;

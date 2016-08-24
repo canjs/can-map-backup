@@ -1,4 +1,4 @@
-@function can.Map.backup.prototype.restore restore
+@function can-map-backup.prototype.restore restore
 @parent can-map-backup.api
 
 @description Restore saved values of an Observe's properties.
@@ -6,17 +6,19 @@
 @signature `map.restore( [deep] )`
 
 `restore` sets the properties of an Observe back to what they were the last time
-[can.Map.backup.prototype.backup backup] was called. If _deep_ is `true`,
+[can-map-backup.prototype.backup backup] was called. If _deep_ is `true`,
 `restore` will also restore the properties of nested Observes.
 
 `restore` will not remove properties that were added since the last backup, but it
 will re-add properties that have been removed.
 
 @param {bool} [deep=false] whether to restore properties in nested Observes
-@return {can.Map} The Observe, for chaining.
+@return {can-map} The Observe, for chaining.
 
 ```
-var recipe = new can.Map({
+var CanMap = require('can-map');
+
+var recipe = new CanMap("Recipe", {
 title: 'Pancake Mix',
 yields: '3 batches',
 ingredients: [{

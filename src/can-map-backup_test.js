@@ -1,13 +1,18 @@
-/*global Recipe*/
+var compute = require('can-compute');
+var CanMap = require('can-map');
+
 require('can-map-backup');
-require('can/model/model');
+require('can-map-define');
 require('steal-qunit');
+
+var Recipe;
 
 QUnit.module('can/map/backup', {
 	setup: function () {
-		can.Map.extend('Recipe');
+		Recipe = CanMap.extend('Recipe');
 	}
 });
+
 test('backing up', function () {
 	var recipe = new Recipe({
 		name: 'cheese'
@@ -21,13 +26,18 @@ test('backing up', function () {
 	ok(!recipe.isDirty(), 'restored, clean');
 	equal(recipe.name, 'cheese', 'name back');
 });
+
 test('backup / restore with associations', function () {
-	can.Map('Instruction');
-	can.Map('Cookbook');
-	can.Map('Recipe', {
-		attributes: {
-			instructions: 'Instruction.models',
-			cookbook: 'Cookbook.model'
+	var Instruction = CanMap.extend('Instruction');
+	var Cookbook = CanMap.extend('Cookbook');
+	var Recipe = CanMap.extend('Recipe', {
+		define: {
+			instructions: {
+				Type: Instruction.List
+			},
+			cookbook: {
+				Type: Cookbook
+			}
 		}
 	}, {});
 	var recipe = new Recipe({
@@ -68,7 +78,7 @@ test('backup / restore with associations', function () {
 });
 
 test('backup restore nested observables', function () {
-	var observe = new can.Map({
+	var observe = new CanMap({
 		nested: {
 			test: 'property'
 		}
@@ -90,7 +100,7 @@ test('backup restore nested observables', function () {
 });
 
 test('backup removes properties that were added (#607)', function () {
-	var map = new can.Map({});
+	var map = new CanMap({});
 	map.backup();
 	map.attr('foo', 'bar');
 	ok(map.isDirty(), 'the map with an additional property is dirty');
@@ -106,7 +116,7 @@ test('isDirty wrapped in a compute should trigger changes #1417', function() {
 
 	recipe.backup();
 
-	var c = can.compute(function() {
+	var c = compute(function() {
 		return recipe.isDirty();
 	});
 

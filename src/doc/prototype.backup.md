@@ -1,4 +1,4 @@
-@function can.Map.backup.prototype.backup backup
+@function can-map-backup.prototype.backup backup
 @parent can-map-backup.api
 
 @description Save the values of the properties of an Map.
@@ -9,14 +9,16 @@
 the Observe as clean. If any of the properties change value, the original
 values can be restored with [can.Map.backup.prototype.restore restore].
 
-@return {can.Map} The map, for chaining.
+@return {can-map} The map, for chaining.
 
 @body
 
 ## Example
 
 ```
-var recipe = new can.Map({
+var CanMap = require('can-map');
+
+var recipe = new CanMap("Recipe", {
 title: 'Pancake Mix',
 yields: '3 batches',
 ingredients: [{
