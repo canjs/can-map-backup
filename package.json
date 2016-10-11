@@ -39,9 +39,6 @@
   ],
   "system": {
     "main": "can-map-backup",
-    "directories": {
-      "lib": "src"
-    },
     "configDependencies": [
       "live-reload"
     ],

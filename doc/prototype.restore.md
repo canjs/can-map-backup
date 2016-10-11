@@ -1,5 +1,5 @@
-@function can-map-backup.prototype.restore restore
-@parent can-map-backup.api
+@function can-map-backup/can-map.prototype.restore restore
+@parent can-map-backup/can-map.prototype
 
 @description Restore saved values of an Observe's properties.
 
@@ -15,8 +15,11 @@ will re-add properties that have been removed.
 @param {bool} [deep=false] whether to restore properties in nested Observes
 @return {can-map} The Observe, for chaining.
 
-```
+@body
+
+```js
 var CanMap = require('can-map');
+require('can-map-backup')
 
 var recipe = new CanMap("Recipe", {
 title: 'Pancake Mix',

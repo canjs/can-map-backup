@@ -1,5 +1,5 @@
-@function can-map-backup.prototype.backup backup
-@parent can-map-backup.api
+@function can-map-backup/can-map.prototype.backup backup
+@parent can-map-backup/can-map.prototype
 
 @description Save the values of the properties of an Map.
 
@@ -17,6 +17,7 @@ values can be restored with [can.Map.backup.prototype.restore restore].
 
 ```
 var CanMap = require('can-map');
+require('can-map-backup')
 
 var recipe = new CanMap("Recipe", {
 title: 'Pancake Mix',
