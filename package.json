@@ -14,7 +14,7 @@
     "postversion": "git push --tags && git checkout master && git branch -D release && git push",
     "testee": "testee test.html --browsers firefox",
     "test": "npm run jshint && npm run testee",
-    "jshint": "jshint src/. --config",
+    "jshint": "jshint *.js --config",
     "release:pre": "npm version prerelease && npm publish",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
@@ -52,14 +52,14 @@
     "npmAlgorithm": "flat"
   },
   "dependencies": {
-    "can-compute": "^3.0.0-pre.11",
-    "can-connect": "^0.6.0-pre.16",
-    "can-fixture": "^0.4.0-pre.11",
-    "can-jquery": "^3.0.0-pre.6",
-    "can-list": "^3.0.0-pre.6",
-    "can-map": "^3.0.0-pre.8",
-    "can-set": "^0.6.0-pre.8",
-    "can-util": "^3.0.0-pre.34"
+    "can-compute": "^3.0.0",
+    "can-connect": "^1.0.0",
+    "can-fixture": "^1.0.0",
+    "can-jquery": "^3.0.1",
+    "can-list": "^3.0.0",
+    "can-map": "^3.0.1",
+    "can-set": "^1.0.0",
+    "can-util": "^3.0.1"
   },
   "devDependencies": {
     "can-map-define": "^3.0.0-pre.2",
