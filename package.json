@@ -23,7 +23,7 @@
     "document": "documentjs",
     "develop": "can-serve --static --develop --port 8080"
   },
-  "main": "dist/cjs/can-map-backup",
+  "main": "can-map-backup",
   "keywords": [
     "canjs"
   ],
