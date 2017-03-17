@@ -55,7 +55,7 @@
     "can-ssr": "^0.11.6",
     "documentjs": "^0.4.2",
     "donejs-cli": "^0.9.5",
-    "generator-donejs": "^0.9.6",
+    "generator-donejs": "^1.0.0",
     "jshint": "^2.9.1",
     "steal": "^1.2.9",
     "steal-qunit": "^1.0.1",
