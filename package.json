@@ -11,11 +11,11 @@
   "scripts": {
     "preversion": "npm test && npm run build",
     "version": "git commit -am \"Update dist for release\" && git checkout -b release && git add -f dist/",
-    "postversion": "git push --tags && git checkout master && git branch -D release && git push",
+    "postversion": "git push --tags && git checkout can-reflect && git branch -D release && git push",
     "testee": "testee test.html --browsers firefox",
     "test": "npm run jshint && npm run testee",
     "jshint": "jshint *.js --config",
-    "release:pre": "npm version prerelease && npm publish",
+    "release:pre": "npm version prerelease && npm publish --tag=pre",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish",
@@ -41,17 +41,17 @@
     ]
   },
   "dependencies": {
-    "can-compute": "^3.0.0",
-    "can-connect": "^1.0.0",
-    "can-fixture": "^1.0.0",
-    "can-jquery": "^3.0.1",
-    "can-list": "^3.0.0",
-    "can-map": "^3.0.1",
+    "can-compute": "^3.1.0-pre.9",
+    "can-connect": "^1.5.0-pre.0",
+    "can-fixture": "^1.1.0-pre.0",
+    "can-jquery": "^3.1.0-pre.0",
+    "can-list": "^3.1.0-pre.9",
+    "can-map": "^3.1.0-pre.10",
     "can-set": "^1.0.0",
     "can-util": "^3.0.1"
   },
   "devDependencies": {
-    "can-map-define": "^3.0.0-pre.2",
+    "can-map-define": "^3.1.0-pre.0",
     "can-ssr": "^0.11.6",
     "documentjs": "^0.4.2",
     "donejs-cli": "^0.9.5",
