@@ -1,5 +1,7 @@
 # can-map-backup
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-map-backup.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/canjs/can-map-backup.png?branch=master)](https://travis-ci.org/canjs/can-map-backup)
 
 can.Map.backup is a plugin that provides a dirty bit for properties on an Map,
