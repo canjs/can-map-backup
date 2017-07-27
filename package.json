@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "can-map-define": "^3.1.0-pre.0",
-    "documentjs": "^0.4.2",
+    "documentjs": "^0.5.0",
     "done-ssr": "^1.0.4",
     "donejs-cli": "^1.0.1",
     "generator-donejs": "^1.0.5",
