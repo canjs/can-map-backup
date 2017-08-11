@@ -1,115 +1,28 @@
 # can-map-backup
 
+[![Join the chat at https://gitter.im/canjs/canjs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/canjs/canjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canjs/can-map-backup/blob/master/LICENSE.md)
+[![npm version](https://badge.fury.io/js/can-map-backup.svg)](https://www.npmjs.com/package/can-map-backup)
+[![Travis build status](https://travis-ci.org/canjs/can-map-backup.svg?branch=master)](https://travis-ci.org/canjs/can-map-backup)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/canjs/can-map-backup?branch=master&svg=true)](https://ci.appveyor.com/project/matthewp/can-map-backup)
+[![Coverage status](https://coveralls.io/repos/github/canjs/can-map-backup/badge.svg?branch=master)](https://coveralls.io/github/canjs/can-map-backup?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-map-backup.svg)](https://greenkeeper.io/)
 
-[![Build Status](https://travis-ci.org/canjs/can-map-backup.png?branch=master)](https://travis-ci.org/canjs/can-map-backup)
+FAILED TO GET DESCRIPTION
 
-can.Map.backup is a plugin that provides a dirty bit for properties on an Map,
-and lets you restore the original values of an Map's properties after they are changed.
+## Documentation
 
-## Overview
+Read the [API docs on CanJS.com](https://canjs.com/doc/can-map-backup.html).
 
-Here is an example showing how to use `[can.Map.backup.prototype.backup backup]` to save values,
-`[can.Map.backup.prototype.restore restore]` to restore them, and `[can.Map.backup.prototype.isDirty isDirty]`
+## Changelog
 
-to check if the Map has changed:
-
-```
-var recipe = new can.Map({
-  title: 'Pancake Mix',
-  yields: '3 batches',
-  ingredients: [{
-    ingredient: 'flour',
-    quantity: '6 cups'
-  },{
-    ingredient: 'baking soda',
-    quantity: '1 1/2 teaspoons'
-  },{
-    ingredient: 'baking powder',
-    quantity: '3 teaspoons'
-  },{
-    ingredient: 'salt',
-    quantity: '1 tablespoon'
-  },{
-    ingredient: 'sugar',
-    quantity: '2 tablespoons'
-  }]
-});
-recipe.backup();
-
-recipe.attr('title', 'Flapjack Mix');
-recipe.title;     // 'Flapjack Mix'
-recipe.isDirty(); // true
-
-recipe.restore();
-recipe.title;     // 'Pancake Mix'
-```
-
-## Usage
-
-### ES6 use
-
-With StealJS, you can import this module directly in a template that is autorendered:
-
-```js
-import plugin from 'can-map-backup';
-```
-
-### CommonJS use
-
-Use `require` to load `can-map-backup` and everything else
-needed to create a template that uses `can-map-backup`:
-
-```js
-var plugin = require("can-map-backup");
-```
-
-### AMD use
-
-Configure the `can` and `jquery` paths and the `can-map-backup` package:
-
-```html
-<script src="require.js"></script>
-<script>
-	require.config({
-	    paths: {
-	        "jquery": "node_modules/jquery/dist/jquery",
-	        "can": "node_modules/canjs/dist/amd/can"
-	    },
-	    packages: [{
-		    	name: 'can-map-backup',
-		    	location: 'node_modules/can-map-backup/dist/amd',
-		    	main: 'lib/can-map-backup'
-	    }]
-	});
-	require(["main-amd"], function(){});
-</script>
-```
-
-### Standalone use
-
-Load the `global` version of the plugin:
-
-```html
-<script src='./node_modules/can-map-backup/dist/global/can-map-backup.js'></script>
-```
+See the [latest releases on GitHub](https://github.com/canjs/can-map-backup/releases).
 
 ## Contributing
 
-### Making a Build
+The [contribution guide](https://github.com/canjs/can-map-backup/blob/master/CONTRIBUTING.md) has information on getting help, reporting bugs, developing locally, and more.
 
-To make a build of the distributables into `dist/` in the cloned repository run
+## License
 
-```
-npm install
-node build
-```
+[MIT](https://github.com/canjs/can-map-backup/blob/master/LICENSE.md)
 
-### Running the tests
-
-Tests can run in the browser by opening a webserver and visiting the `test.html` page.
-Automated tests that run the tests from the command line in Firefox can be run with
-
-```
-npm test
-```
