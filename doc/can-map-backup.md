@@ -1,5 +1,6 @@
 @module {can-map} can-map-backup
-@parent can-legacy
+@parent can-observables
+@collection can-legacy
 @group can-map-backup/can-map.prototype 0 can-map.prototype
 @test src/test/test.html
 @package ../package.json
