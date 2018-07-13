@@ -1,8 +1,9 @@
 //allows you to backup and restore a map instance
-var compute = require('can-compute');
+var SimpleObservable = require("can-simple-observable");
 var CanMap = require('can-map');
-var compare = require('can-set/src/compare');
-var assign = require("can-util/js/assign/assign");
+var diffDeep = require("can-diff/deep/deep");
+var diffMap = require("can-diff/map/map");
+var assign = require("can-assign");
 
 var flatProps = function (a, cur) {
 	var obj = {};
@@ -20,28 +21,41 @@ var oldSetup = CanMap.prototype.setup;
 
 assign(CanMap.prototype, {
 	setup: function() {
-		this._backupStore = compute();
+		this._backupStore = new SimpleObservable();
 		return oldSetup.apply(this, arguments);
 	},
 
 	backup: function () {
-		this._backupStore(this.attr());
+		this._backupStore.set(this.attr());
 		return this;
 	},
 	isDirty: function (checkAssociations) {
-		var backupStore = this._backupStore();
+		var backupStore = this._backupStore.get();
 		if(!backupStore){
 			return false;
 		}
 		var currentValue = this.attr();
-		var aParent, bParent, parentProp;
-		var compares = {};
-		var options = { deep: !! checkAssociations };
-
-		return !compare.equal(currentValue, backupStore, aParent, bParent, parentProp, compares, options);
+		var patches;
+		if(!! checkAssociations) {
+			patches = diffDeep(currentValue, backupStore);
+		} else {
+			patches = diffMap(currentValue, backupStore).filter(function(patch){
+				// only keep those that are not a set of deep object
+				if(patch.type !== "set") {
+					return true;
+				} else {
+					// check values .. if both objects ... we are not dirty ...
+					var curVal = currentValue[patch.key],
+						backupVal = backupStore[patch.key];
+					var twoObjectsCompared = curVal && backupVal && typeof curVal === "object" && typeof backupVal === "object";
+					return !twoObjectsCompared;
+				}
+			});
+		}
+		return patches.length;
 	},
 	restore: function (restoreAssociations) {
-		var props = restoreAssociations ? this._backupStore() : flatProps(this._backupStore(), this);
+		var props = restoreAssociations ? this._backupStore.get() : flatProps(this._backupStore.get(), this);
 		if (this.isDirty(restoreAssociations)) {
 			this.attr(props, true);
 		}

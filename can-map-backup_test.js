@@ -1,4 +1,4 @@
-var compute = require('can-compute');
+var Observation = require('can-observation');
 var CanMap = require('can-map');
 
 require('can-map-backup');
@@ -108,7 +108,7 @@ test('backup removes properties that were added (#607)', function () {
 	ok(!map.attr('foo'), 'there is no foo property');
 });
 
-test('isDirty wrapped in a compute should trigger changes #1417', function() {
+test('isDirty wrapped in a Observation should trigger changes #1417', function() {
 	expect(2);
 	var recipe = new Recipe({
 		name: 'bread'
@@ -116,14 +116,14 @@ test('isDirty wrapped in a compute should trigger changes #1417', function() {
 
 	recipe.backup();
 
-	var c = compute(function() {
+	var c = new Observation(function() {
 		return recipe.isDirty();
 	});
 
-	ok(!c(), 'isDirty is false');
+	ok(!c.get(), 'isDirty is false');
 
-	c.bind('change', function() {
-		ok(c(), 'isDirty is true and a change has occurred');
+	c.on( function() {
+		ok(c.get(), 'isDirty is true and a change has occurred');
 	});
 
 	recipe.attr('name', 'cheese');
