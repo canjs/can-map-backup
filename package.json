@@ -45,7 +45,7 @@
     "can-simple-observable": "^2.2.0"
   },
   "devDependencies": {
-    "can-map-define": "^4.2.0",
+    "can-map-define": "^4.4.0",
     "can-observation": "^4.1.0",
     "detect-cyclic-packages": "^1.1.0",
     "jshint": "^2.9.1",
